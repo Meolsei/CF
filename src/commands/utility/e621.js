@@ -27,10 +27,8 @@ module.exports = {
                 .setDescription(search !== null ? `Search query: ${search}` : null)
                 .setImage(post.file.url)
                 .setTimestamp()
-                .setFooter({ text: "Command made by MeltyMooncakes & Meolsei.\nThis command is a massive work in progress. If it breaks somewhere, let @meltymooncakes or @meolsei know." });
+                .setFooter({ text: "Command made by Meolsei.\nThis command is a massive work in progress. If it breaks somewhere, let @meolsei know." });
         }
-
-        //https://cdn.discordapp.com/attachments/755167499032723559/1245186101367275594/untitled.mp4?ex=669a692d&is=669917ad&hm=d6077d51cfbf6893f0cc63d59ef580eafeba17d91011062380b5704cb22b12e1&
 
         return this.client.menus.create(interaction, data.posts, {
             loop: false,
