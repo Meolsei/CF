@@ -1,0 +1,30 @@
+{
+  "name": "nyabot.js",
+  "version": "1.0.0",
+  "description": "Discord bot",
+  "main": "./src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Meolsei/Nyabot.JS.git"
+  },
+  "keywords": [
+    "discord",
+    "discord_bot",
+    "discord.js"
+  ],
+  "author": "@meolsei",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Meolsei/Nyabot.JS/issues"
+  },
+  "homepage": "https://github.com/Meolsei/Nyabot.JS#readme",
+  "devDependencies": {
+    "axios": "^1.7.2",
+    "discord.js": "^14.15.3",
+    "eslint": "^9.7.0",
+    "uuid": "^10.0.0"
+  }
+}
