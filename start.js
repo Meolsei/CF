@@ -12,7 +12,11 @@ const { Client, Collection, GatewayIntentBits } = require('discord.js');
 // child_process
 const { spawnSync } = require('child_process');
 
-const client = new Client({ intents: [GatewayIntentBits.Guilds] });
+const client = new Client({
+    intents: Object.keys(GatewayIntentBits).map((a)=>{
+      return GatewayIntentBits[a]
+    }),
+  });
 
 client.commands = new Collection();
 
