@@ -4,7 +4,7 @@ const dotenv = require('dotenv').config({ path: __dirname + '/.../' })
 
 module.exports = {
     data: new SlashCommandBuilder()
-        .setName('media')
+        .setName('e621')
         .setDescription('Gather media from API.')
         .addIntegerOption(option =>
             option.setName('amount')
@@ -27,6 +27,8 @@ module.exports = {
             option.setName('search')
                 .setDescription('Your search query.')
         ),
+
+        aliases: ['e6'],
 
         async execute(interaction) {      
             // Options
