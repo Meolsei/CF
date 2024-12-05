@@ -1,4 +1,4 @@
-const { SlashCommandBuilder } = require('discord.js');
+const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
 const dotenv = require('dotenv').config({ path: __dirname + '/.../' })
 
 module.exports = {
@@ -11,11 +11,19 @@ module.exports = {
                 await interaction.reply(`Only developers can use this command.`);
                 return;
             }
-            else {
-                const start = await interaction.reply({ content: 'Pinging...', fetchReply: true });
-                const latency = start.createdTimestamp - interaction.createdTimestamp;
-                await interaction.editReply(`Bot latency is: ${latency}ms.\nAPI latency is: ${interaction.client.ws.ping}ms.`);
-            }
+
+            const start = await interaction.reply({ content: 'Pinging...', fetchReply: true });
+            const latency = start.createdTimestamp - interaction.createdTimestamp;
+
+            const embed = new EmbedBuilder()
+                .setColor(0x6b03fc)
+                .setTitle('Bot Latency')
+                .addFields(
+                    { name: 'Bot Latency', value: `${latency}ms`},
+                    { name: 'API Latency', value: `${interaction.client.ws.ping}ms`}
+                )
+            
+            await start.edit({ embeds: [embed] })
         },
 
 };

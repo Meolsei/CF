@@ -6,13 +6,7 @@ const fs = require('fs');
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('reload')
-        .setDescription('Reload the bot\'s commands.')
-        .addStringOption(option =>
-            option.setName('command')
-                .setDescription('The command to reload.')
-                .setRequired(true)
-            
-        ),
+        .setDescription('Reload the bot\'s commands.'),
         
 
         async execute(interaction) {           
