@@ -1,20 +1,39 @@
 import aiohttp
 import asyncio
-from datetime import datetime
+import os
+from dotenv import load_dotenv
+load_dotenv()
+import base64
+import json
+import time
 
-data = []
+useragent = os.getenv("E6-AGENT")
+apikey = os.getenv("E6-KEY")
+username = os.getenv("E6-USERNAME")
 
-async def fetch_status():
-    async with aiohttp.ClientSession() as session:
-        async with session.get("https://discordstatus.com/api/v2/status.json") as response:
+headers = {
+"Authorization": "Basic " + base64.b64encode(f"{username}:{apikey}".encode()).decode(),
+"User-Agent": f"{useragent}"
+}
 
-            print("Status:", response.status)
-            print("Content-type:", response.headers['content-type'])
+page = 1
+search = "gardevoir"
+index = 0
 
+async def fetch_posts():
+    async with aiohttp.ClientSession(headers=headers) as session:
+        async with session.get(f"https://e621.net/posts.json?page={page}&tags={search}") as response:
             data = await response.json()
-            
-    updated_at = datetime.fromisoformat(data['page']['updated_at'])
-    formatted_updated_at = updated_at.strftime("%b %d, %y @ %H:%M:%S")
-    print(data['status']['description'] + " -- " + formatted_updated_at)
+            global index
 
-asyncio.run(fetch_status())
+            while True:
+                time.sleep(2.5)
+                if index < len(data['posts']):
+                    print(data['posts'][index]['id'])
+                    index += 1
+                else:
+                    print("Too large!")
+                    break
+
+
+asyncio.run(fetch_posts())

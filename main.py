@@ -63,4 +63,4 @@ async def unload(ctx):
     await client.tree.sync()
     await ctx.send("Synced.")
 
-client.run(os.getenv("TOKEN"), log_handler=handler)
+client.run(os.getenv("TOKEN"), log_handler=handler, log_level=logging.DEBUG)

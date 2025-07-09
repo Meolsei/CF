@@ -44,7 +44,7 @@ You will also need API keys for e621.net and rule34.xxx.
     - Copy the API key and place it in the `.env` file.
 
 3. **Create a User-Agent**
-    - Enter a user-agent string like: `Bot/1.0 by (Your Username on e621)`.
+    - Enter a user-agent string like: `Bot/1.0 (by Your Username on e621)`.
 
 **rule34.xxx**
 1. **Create an Account**
