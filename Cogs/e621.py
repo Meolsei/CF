@@ -72,14 +72,12 @@ class e621(commands.Cog):
         self.data = await self.api.fetchPosts(search=search, page=page)
         self.index = 0
 
-        self.nav = Navigation(self.data, self.index)
+        self.nav = Navigation(self.api, search, page, self.data, self.index)
 
         await interaction.response.send_message(
             embed=self.nav.createEmbed(),
             view=self.nav
         )
-
-        await self.api.close()
 
 async def setup(bot):
     await bot.add_cog(e621(bot))

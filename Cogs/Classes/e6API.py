@@ -11,7 +11,7 @@ load_dotenv()
 
 class e6API():
     def __init__(self):
-        self.baseURL = "https://e621.net/posts.json"
+        self.baseURL = "https://e621.net/posts.json?limit=10&"
 
         self.appName = os.getenv("APP_NAME")
         self.appVer = os.getenv("APP_VERSION")
